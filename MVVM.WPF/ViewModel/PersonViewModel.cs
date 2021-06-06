@@ -4,13 +4,16 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
 using MVVM.WPF.Model;
+using MVVM.WPF.Model.Persistence;
 using MVVM.WPF.Model.Repository;
 
 namespace MVVM.WPF.ViewModel
 {
     public class PersonViewModel : BaseViewModel
     {
-        private DataRepository _data = new DataRepository();
+        //private DataRepository _data = new DataRepository();
+        private PersonRepository _data;
+        private WPFContext db;
 
         public ObservableCollection<Person> Persons { get; set; }
 
@@ -25,13 +28,15 @@ namespace MVVM.WPF.ViewModel
         public PersonViewModel()
         {
 
+            db = new WPFContext();
+            _data = new PersonRepository(db);
             this.Persons = new ObservableCollection<Person>();
 
             this.SelectedPerson = new Person();
             this.SalvarCommand = new ActionCommand(p => Save(), p => IsValid);
-            this.EditCommand = new ActionCommand(p => Edit(), p => IsValid);
-            this.DeleteCommand = new ActionCommand(p => Delete(), p => IsValid);
-            this.LoadCommand = new ActionCommand(p => LoadData(), p => IsValid);
+            this.EditCommand = new ActionCommand(p => Edit());
+            this.DeleteCommand = new ActionCommand(p => Delete());
+            this.LoadCommand = new ActionCommand(p => LoadData());
 
             LoadData();
         }

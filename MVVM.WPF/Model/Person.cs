@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace MVVM.WPF.Model
@@ -10,6 +11,7 @@ namespace MVVM.WPF.Model
         {
             Endereco = new Address();
         }
+        [Key]
         public Guid Id { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }

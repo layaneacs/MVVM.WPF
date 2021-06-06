@@ -62,6 +62,7 @@ namespace MVVM.WPF.Model.Repository
             if (person != null)
             {
                 data.Remove(person);
+
             }
 
         }
