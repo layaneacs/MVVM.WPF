@@ -9,8 +9,7 @@ namespace MVVM.WPF.Model.Persistence
     {
         public WPFContext() 
             : base()
-        {
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<BookContext, EFDemo.Migrations.Configuration>());
+        {           
             Database.EnsureCreated();
         }
 

@@ -18,6 +18,7 @@ namespace MVVM.WPF.Model.Repository
         public void Create(Person model)
         {
             model.Id = Guid.NewGuid();
+            model.Endereco.Id = Guid.NewGuid();
             _context.Persons.Add(model);
             _context.SaveChanges();
         }
