@@ -89,8 +89,7 @@ namespace MVVM.WPF.ViewModel
         //-- ACTIONS
         private void Save()
         {
-            try
-            {
+            
                 Person person = new Person()
                 {
                     Cpf = Cpf,
@@ -114,47 +113,31 @@ namespace MVVM.WPF.ViewModel
 
                 this.Persons.Add(person);
 
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+          
           
         }
 
         private void Edit()
         {
 
-            try
-            {
+            
                 Person person = SelectedPerson;
                 _data.Update(person);
 
                 SelectedPerson = null;
                 LoadData();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            
+           
             
 
         }
 
         private void Delete()
         {
-            try
-            {
+            
                 _data.Delete(SelectedPerson.Id);
                 LoadData();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            
             
         }
 
